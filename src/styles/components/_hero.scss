@@ -1,0 +1,53 @@
+
+.hero_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(180deg, rgb(253, 179, 123) 0%, rgba(229,70,82,1) 100%);
+}
+
+.img_container {
+    padding: 10px;
+} 
+.girl_map {
+    box-shadow: 0px 0px 5px 1px 
+    rgba($color: #30303040, $alpha: .8);
+    border-radius: 10px;
+    width: 80vw;
+}
+
+.slogan {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.hero_btn-section {
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.hero_btn-section button {
+    width: 100px;
+    padding: 5px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0px 3px 5px 0px rgba($color: #000000, $alpha: .4);
+    &:hover {
+        background: #FF5F8F;
+    }
+
+}
+
+.tours {
+    background: linear-gradient(180deg, rgb(253, 179, 123) 0%, rgba(229,70,82,1) 100%);
+}
+
+.contactanos {
+    background: linear-gradient(180deg, rgba(91,185,180,1) 0%, rgb(72, 139, 133) 100%);
+}

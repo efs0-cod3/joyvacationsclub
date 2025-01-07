@@ -1,0 +1,31 @@
+.footer_container {
+    background-color: rgb(36, 36, 36);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.redes {
+    padding: 5px;
+}
+
+.redes a {
+    display: flex;
+    align-items: center;
+    color: #009688;
+    text-decoration: none;
+}
+
+.redes a span {
+    padding-left: 5px;
+}
+
+.copy, .address {
+    text-align: center;
+    color: rgb(139, 139, 139);
+}
+
+.address {
+    color: white;
+}

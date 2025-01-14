@@ -1,6 +1,6 @@
 import { BiLogoInstagramAlt } from "react-icons/bi";
 import { FaSquareWhatsapp } from "react-icons/fa6";
-function Footer() {
+const Footer = () => {
   return (
     <div className="footer_container">
       <div className="redes ig">

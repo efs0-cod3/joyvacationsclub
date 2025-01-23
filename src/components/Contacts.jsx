@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { BiLogoInstagramAlt } from "react-icons/bi";
+import { BiLogoInstagramAlt,BiArrowBack } from "react-icons/bi";
 import { FaSquareWhatsapp } from "react-icons/fa6";
+import { useNavigate } from "react-router";
+
 
 const Contacts = () => {
-// Boton para volver a la pagina principal
-//   <button className='maintenance_nav--btn btn' onClick={goBack}>
-//   <BiLeftArrowAlt className='animate__animated animate__fadeIn'/>
-// </button>
+
+  const navigate = useNavigate()
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [interes, setInteres] = useState("");
@@ -28,9 +28,28 @@ const Contacts = () => {
     setEmail(e.target.value);
   };
 
+  
+  const goBack = () => {
+    navigate('/')
+  }
+
+  const submitForm = (e) => {
+    e.preventDefault()
+    setEmail('')
+    setInteres('')
+    setLastName('')
+    setName('')
+  }
+
   return (
     <div className="contacts_container">
       <div className="contacts_">
+        <div className="back_btn--container">
+          <button onClick={goBack}>
+<BiArrowBack/>
+
+          </button>
+           </div>
         <div className="redes_adrss--container">
           <h2>Nuestras redes</h2>
           <div className="redes ig">
@@ -50,7 +69,7 @@ const Contacts = () => {
         </div>
 
         <div className="form_container">
-          <form className="form" name="contact_form" method="POST" data-netlify="true">
+          <form className="form" name="contact_form" method="POST" data-netlify="true" action="mailto:info@joyvacationsclub.com" enctype="multipart/form-data" onSubmit={submitForm}>
             <h2 className="auth_form--title">Contactanos</h2>
             <div className="form--input">
               <label>Nombre:</label>

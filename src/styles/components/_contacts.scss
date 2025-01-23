@@ -9,6 +9,7 @@
 
 .contacts_ {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .contacts_container .address {
@@ -47,4 +48,12 @@
   &:hover {
     background: #ff5f8f;
   }
+}
+
+.redes_adrss--container {
+  margin: 0 auto;
+}
+
+.form_container{
+  margin: 0 auto;
 }

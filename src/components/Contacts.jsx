@@ -2,30 +2,26 @@ import { useState } from "react";
 import { BiLogoInstagramAlt,BiArrowBack } from "react-icons/bi";
 import { FaSquareWhatsapp } from "react-icons/fa6";
 import { useNavigate } from "react-router";
+import emailjs from '@emailjs/browser';
+import Swal from "sweetalert2";
+
 
 
 const Contacts = () => {
 
   const navigate = useNavigate()
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [interes, setInteres] = useState("");
-  const [email, setEmail] = useState("");
 
-  const nameChange = (e) => {
-    setName(e.target.value);
-  };
+  const [formData,setFormData] = useState({
+    from_name: "",
+    from_email:"",
+    message:"",
+  })
 
-  const lastNameChange = (e) => {
-    setLastName(e.target.value);
-  };
 
-  const interesChange = (e) => {
-    setInteres(e.target.value);
-  };
-
-  const emailChange = (e) => {
-    setEmail(e.target.value);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name)
+    setFormData({ ...formData, [name]: value });
   };
 
   
@@ -33,23 +29,40 @@ const Contacts = () => {
     navigate('/')
   }
 
-  const submitForm = (e) => {
-    e.preventDefault()
-    setEmail('')
-    setInteres('')
-    setLastName('')
-    setName('')
-  }
+  // setting form! aun no funciona como quiero
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm('service_0qnbd2d', 'template_0xpv5nd', e.target, {
+        publicKey: 'Sbc5UpLfa7BKk2r2R',
+      })
+      .then(
+        () => {
+          Swal.fire({
+            title: "Gracias por tu mensaje.",
+            text: "Nos pondremos en contacto a la brevedad posible!",
+            icon: "success"
+          });
+
+          setFormData({from_name:"", from_email:"",message:""})
+
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
 
   return (
     <div className="contacts_container">
-      <div className="contacts_">
         <div className="back_btn--container">
           <button onClick={goBack}>
-<BiArrowBack/>
+<BiArrowBack/> Atras
 
           </button>
            </div>
+      <div className="contacts_">
         <div className="redes_adrss--container">
           <h2>Nuestras redes</h2>
           <div className="redes ig">
@@ -69,27 +82,16 @@ const Contacts = () => {
         </div>
 
         <div className="form_container">
-          <form className="form" name="contact_form" method="POST" data-netlify="true" action="mailto:info@joyvacationsclub.com" enctype="multipart/form-data" onSubmit={submitForm}>
+          <form className="form" name="contact_form" method="POST" onSubmit={sendEmail}>
             <h2 className="auth_form--title">Contactanos</h2>
             <div className="form--input">
               <label>Nombre:</label>
               <input
                 type="text"
-                placeholder="John"
-                name="name"
-                value={name}
-                onChange={nameChange}
-              />
-            </div>
-
-            <div className="form--input">
-              <label>Apellido:</label>
-              <input
-                type="text"
-                placeholder="Cooper"
-                value={lastName}
-                name="lastName"
-                onChange={lastNameChange}
+                placeholder="John cooper"
+                name="from_name"
+                value={formData.name}
+                onChange={handleChange}
               />
             </div>
 
@@ -98,9 +100,9 @@ const Contacts = () => {
               <input
                 type="email"
                 placeholder="johncooper@gmail.com"
-                value={email}
-                name="email"
-                onChange={emailChange}
+                value={formData.email}
+                name="from_email"
+                onChange={handleChange}
               />
             </div>
 
@@ -108,9 +110,9 @@ const Contacts = () => {
               <label>Mensaje</label>
               <textarea
                 placeholder="Cuentanos como podemos ayudarte?..."
-                value={interes}
-                name="interes"
-                onChange={interesChange}
+                value={formData.message}
+                name="message"
+                onChange={handleChange}
               />
             </div>
             <div className="auth_form_button_container">

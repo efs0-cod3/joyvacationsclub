@@ -1,11 +1,14 @@
 import { useRef, useState } from 'react'
 
+const SEEN_KEY = 'jvc_welcome_seen'
+
 const Modal = () => {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(() => !localStorage.getItem(SEEN_KEY))
   const videoRef = useRef(null)
 
   const close = () => {
     setOpen(false)
+    localStorage.setItem(SEEN_KEY, '1')
     if (videoRef.current) {
       videoRef.current.pause()
       videoRef.current.currentTime = 0

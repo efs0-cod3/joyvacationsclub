@@ -1,6 +1,72 @@
-.tours_page {
+.tours-placeholder {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--pad-x);
+  text-align: center;
+  background: var(--c-bg);
+
+  &__label {
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--c-gold);
+    margin-bottom: 1.5rem;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
+    gap: 0.8rem;
+
+    &::before,
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: var(--c-gold-dim);
+    }
+  }
+
+  &__title {
+    font-family: var(--font-d);
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--c-cream);
+    margin-bottom: 1.5rem;
+
+    em {
+      font-style: italic;
+      color: var(--c-gold);
+    }
+  }
+
+  &__sub {
+    font-size: 0.9rem;
+    color: var(--c-muted);
+    font-weight: 300;
+    max-width: 360px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--c-bg);
+    background: var(--c-gold);
+    padding: 0.9rem 1.8rem;
+    transition: background 0.3s, transform 0.3s;
+
+    &:hover {
+      background: var(--c-gold-lt);
+      transform: translateY(-2px);
+    }
+  }
 }

@@ -1,38 +1,36 @@
-import { useRef, useState } from "react"
-
+import { useRef, useState } from 'react'
 
 const Modal = () => {
-  const [modal, setModal] = useState(true)
+  const [open, setOpen] = useState(true)
+  const videoRef = useRef(null)
 
-  const vidRef = useRef();
-  
-  const toggleModal = () => {
-    const modalDom = document.getElementsByClassName('modal')[0]
-
-    const video = document.getElementsByClassName('video')[0]
-
-    setModal(!modal);
-    if(modal) {
-      modalDom.classList.remove('active-modal')
+  const close = () => {
+    setOpen(false)
+    if (videoRef.current) {
+      videoRef.current.pause()
+      videoRef.current.currentTime = 0
     }
-    video.pause(); // Pause the video
-    video.currentTime = 0; // Reset video to the start
-  };
-  
+  }
 
   return (
-    
-      <div className='modal active-modal'>
-      <div className="modal_content">
-      <div className="close_btn_container ">
-        <button className="close_btn" onClick={toggleModal}>X - Close</button>
-      </div>
-        <video className="video" controls muted ref={vidRef} autoPlay>
-            <source src='/assets/videos/joyVacationNews.MP4' type="video/mp4"/>
-        </video>
+    <div className={`modal-overlay${open ? ' open' : ''}`} onClick={(e) => e.target === e.currentTarget && close()}>
+      <div className="modal-panel">
+        <div className="modal-panel__header">
+          <span className="modal-panel__title">Joy Vacations — Novedades</span>
+          <button className="modal-panel__close" onClick={close} aria-label="Cerrar">✕</button>
+        </div>
+        <div className="modal-panel__body">
+          <video
+            ref={videoRef}
+            src="/assets/videos/joyVacationNews.MP4"
+            controls
+            muted
+            autoPlay
+          />
+        </div>
       </div>
     </div>
-)
+  )
 }
 
 export default Modal

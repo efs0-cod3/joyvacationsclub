@@ -1,37 +1,18 @@
-import { useState } from "react";
-import { BiLogoInstagramAlt,BiArrowBack } from "react-icons/bi";
-import { FaSquareWhatsapp } from "react-icons/fa6";
-import { useNavigate } from "react-router";
-import emailjs from '@emailjs/browser';
-import Swal from "sweetalert2";
-
-
+import { useState } from 'react'
+import { useNavigate } from 'react-router'
+import emailjs from '@emailjs/browser'
+import Swal from 'sweetalert2'
+import { BiLogoInstagramAlt } from 'react-icons/bi'
+import { FaSquareWhatsapp } from 'react-icons/fa6'
+import { FiMapPin, FiArrowLeft } from 'react-icons/fi'
 
 const Contacts = () => {
-
   const navigate = useNavigate()
+  const [sending, setSending] = useState(false)
 
-  const [formData,setFormData] = useState({
-    from_name: "",
-    from_email:"",
-    message:"",
-  })
-
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    console.log(name)
-    setFormData({ ...formData, [name]: value });
-  };
-
-  
-  const goBack = () => {
-    navigate('/')
-  }
-
-  // setting form! aun no funciona como quiero
   const sendEmail = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    setSending(true)
 
     emailjs
       .sendForm('service_0qnbd2d', 'template_0xpv5nd', e.target, {
@@ -40,92 +21,132 @@ const Contacts = () => {
       .then(
         () => {
           Swal.fire({
-            title: "Gracias por tu mensaje.",
-            text: "Nos pondremos en contacto a la brevedad posible!",
-            icon: "success"
-          });
-
-          setFormData({from_name:"", from_email:"",message:""})
-
+            title: 'Gracias por tu mensaje.',
+            text: 'Nos pondremos en contacto a la brevedad posible!',
+            icon: 'success',
+            background: '#0E0E12',
+            color: '#F0EBE3',
+            confirmButtonColor: '#C9A96E',
+          })
+          e.target.reset()
         },
         (error) => {
-          console.log('FAILED...', error.text);
-        },
-      );
-  };
+          console.error('EmailJS error:', error.text)
+          Swal.fire({
+            title: 'Error',
+            text: 'No se pudo enviar el mensaje. Por favor intenta de nuevo.',
+            icon: 'error',
+            background: '#0E0E12',
+            color: '#F0EBE3',
+          })
+        }
+      )
+      .finally(() => setSending(false))
+  }
 
   return (
-    <div className="contacts_container">
-        <div className="back_btn--container">
-          <button onClick={goBack}>
-<BiArrowBack/> Atras
+    <main className="contacts-page">
+      <div className="contacts-page__left">
+        <p className="contacts-page__eyebrow">Contáctanos</p>
 
+        <h1 className="contacts-page__title">
+          Hablemos de tu<br />
+          <em>próxima aventura</em>
+        </h1>
+
+        <div className="contacts-page__info">
+          <div className="contacts-page__info-item">
+            <span className="icon"><BiLogoInstagramAlt /></span>
+            <div className="details">
+              <p className="lbl">Instagram</p>
+              <p className="val">
+                <a
+                  href="https://www.instagram.com/joyvacationsclub/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  @joyvacationsclub
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div className="contacts-page__info-item">
+            <span className="icon"><FaSquareWhatsapp /></span>
+            <div className="details">
+              <p className="lbl">WhatsApp</p>
+              <p className="val">
+                <a
+                  href="https://wa.me/17742429893?text=Hola les hablo desde el website me gustaria agendar..."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  +1 (774) 242-9893
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div className="contacts-page__info-item">
+            <span className="icon"><FiMapPin /></span>
+            <div className="details">
+              <p className="lbl">Dirección</p>
+              <p className="val">38 Caryl Ave, Yonkers, NY 10705</p>
+            </div>
+          </div>
+        </div>
+
+        <button className="contacts-page__back" onClick={() => navigate('/')}>
+          <FiArrowLeft className="arr" /> Volver al inicio
+        </button>
+      </div>
+
+      <div className="contacts-page__right">
+        <p className="contacts-page__form-eyebrow">Formulario</p>
+        <h2 className="contacts-page__form-title">
+          Envíanos un <em>mensaje</em>
+        </h2>
+
+        <form className="contact-form" onSubmit={sendEmail}>
+          <div className="contact-form__field">
+            <label htmlFor="from_name">Nombre completo</label>
+            <input
+              id="from_name"
+              name="from_name"
+              type="text"
+              placeholder="Tu nombre"
+              required
+            />
+          </div>
+
+          <div className="contact-form__field">
+            <label htmlFor="from_email">Correo electrónico</label>
+            <input
+              id="from_email"
+              name="from_email"
+              type="email"
+              placeholder="tu@email.com"
+              required
+            />
+          </div>
+
+          <div className="contact-form__field">
+            <label htmlFor="message">Mensaje</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Cuéntanos sobre tu viaje ideal..."
+              required
+            />
+          </div>
+
+          <button type="submit" className="contact-form__submit" disabled={sending}>
+            {sending ? 'Enviando...' : <>Enviar mensaje <span className="arrow">→</span></>}
           </button>
-           </div>
-      <div className="contacts_">
-        <div className="redes_adrss--container">
-          <h2>Nuestras redes</h2>
-          <div className="redes ig">
-            <a href="https://www.instagram.com/joyvacationsclub/">
-              <BiLogoInstagramAlt />
-              <span>joyvacationsclub</span>
-            </a>
-          </div>
-          <div className="redes whatsapp">
-            <a href="https://wa.me/7742429893?text=Hola les hablo desde el website me gustaria agendar...">
-              <FaSquareWhatsapp /> <span>774-242-9893</span>
-            </a>
-          </div>
-          <div className="redes address">
-            <p>38 Caryl Ave. YOKERS, New York 10705</p>
-          </div>
-        </div>
-
-        <div className="form_container">
-          <form className="form" name="contact_form" method="POST" onSubmit={sendEmail}>
-            <h2 className="auth_form--title">Contactanos</h2>
-            <div className="form--input">
-              <label>Nombre:</label>
-              <input
-                type="text"
-                placeholder="John cooper"
-                name="from_name"
-                value={formData.name}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="form--input">
-              <label>Email:</label>
-              <input
-                type="email"
-                placeholder="johncooper@gmail.com"
-                value={formData.email}
-                name="from_email"
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="form--input">
-              <label>Mensaje</label>
-              <textarea
-                placeholder="Cuentanos como podemos ayudarte?..."
-                value={formData.message}
-                name="message"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="auth_form_button_container">
-              <button className="btn login_btn">Enviar</button>
-            </div>
-          </form>
-        </div>
+        </form>
       </div>
-      <div className="redes copy">
-        <p>© 2025 Joy Vacations Club. Todos los derechos reservados</p>
-      </div>
-    </div>
-  );
-};
+    </main>
+  )
+}
 
-export default Contacts;
+export default Contacts

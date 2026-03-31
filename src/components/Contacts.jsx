@@ -9,6 +9,8 @@ import { FiMapPin, FiArrowLeft } from 'react-icons/fi'
 const Contacts = () => {
   const navigate = useNavigate()
   const [sending, setSending] = useState(false)
+  const PHONE = import.meta.env.VITE_WHATSAPP_PHONE;
+  const PHONE_FORMATTED = import.meta.env.VITE_PHONE_FORMATTED;
 
   const sendEmail = (e) => {
     e.preventDefault()
@@ -77,11 +79,11 @@ const Contacts = () => {
               <p className="lbl">WhatsApp</p>
               <p className="val">
                 <a
-                  href="https://wa.me/17742429893?text=Hola les hablo desde el website me gustaria agendar..."
+                  href={`https://wa.me/1${PHONE}?text=Hola les hablo desde el website me gustaria agendar...`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  +1 (774) 242-9893
+                  {PHONE_FORMATTED}
                 </a>
               </p>
             </div>

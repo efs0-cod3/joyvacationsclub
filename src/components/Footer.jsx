@@ -4,6 +4,7 @@ import { FaSquareWhatsapp } from 'react-icons/fa6'
 import { FiMapPin } from 'react-icons/fi'
 
 const Footer = () => {
+  
   return (
     <footer className="footer">
       <div className="footer__inner">

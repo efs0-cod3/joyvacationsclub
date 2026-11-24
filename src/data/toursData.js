@@ -30,7 +30,12 @@ const toursData = [
     description:
       "Contrastes es un tour único que te lleva a visitar Harlem, el Bronx, Queens y Brooklyn, conociendo la cultura de las diferentes comunidades de Nueva York. Vehículo con aire acondicionado y guía incluidos. ¡En solo 5 horas sentirás que conoces esta gran ciudad!",
     price: 62.77,
-    image: "/assets/img/nyc/contrastes.jpg",
+    images: [
+      "/assets/img/nyc/contrastes-1.jpg",
+      "/assets/img/nyc/contrastes-2.jpg",
+      "/assets/img/nyc/contrastes-3.jpg",
+      "/assets/img/nyc/contrastes.jpg",
+    ],
     duration: "5 horas (aprox.)",
     viatorUrl:
       "https://www.viator.com/es-ES/tours/New-York-City/Contrasts-with-Taste/d687-220222P1",

@@ -15,7 +15,7 @@ const Navbar = () => {
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
       <Link to="/">
         <img
-          src="/assets/logos/joy_vacation_club_logo.png"
+          src="/assets/logos/joy_logo_rosa_blanco.png"
           alt="Joy Vacations Club"
           className="navbar__logo"
         />

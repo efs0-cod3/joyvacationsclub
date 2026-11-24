@@ -18,13 +18,13 @@ const toursData = [
   },
   {
     id: 2,
-    title: "Contrastes con Sabor",
+    title: "Tour Contrastes NY",
     location: "Nueva York",
     description:
-      "Descubre los contrastes de Nueva York a través de sus barrios y su gastronomía. Una experiencia de Joy Vacations Club para conocer la ciudad con todos los sentidos.",
-    price: null,
-    image: null,
-    duration: null,
+      "Contrastes es un tour único que te lleva a visitar Harlem, el Bronx, Queens y Brooklyn, conociendo la cultura de las diferentes comunidades de Nueva York. Vehículo con aire acondicionado y guía incluidos. ¡En solo 5 horas sentirás que conoces esta gran ciudad!",
+    price: 62.77,
+    image: "/assets/img/nyc/contrastes.jpg",
+    duration: "5 horas (aprox.)",
     viatorUrl:
       "https://www.viator.com/es-ES/tours/New-York-City/Contrasts-with-Taste/d687-220222P1",
   },

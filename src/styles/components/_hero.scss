@@ -28,10 +28,10 @@
       inset: 0;
       background: linear-gradient(
         170deg,
-        rgba(8, 8, 8, 0.08) 0%,
-        rgba(8, 8, 8, 0.15) 35%,
-        rgba(8, 8, 8, 0.72) 62%,
-        rgba(8, 8, 8, 0.97) 100%
+        rgba(15, 10, 31, 0.08) 0%,
+        rgba(15, 10, 31, 0.15) 35%,
+        rgba(15, 10, 31, 0.72) 62%,
+        rgba(15, 10, 31, 0.97) 100%
       );
     }
   }
@@ -158,7 +158,7 @@
       &:hover {
         background: var(--c-gold-lt);
         transform: translateY(-2px);
-        box-shadow: 0 10px 32px rgba(201, 169, 110, 0.28);
+        box-shadow: 0 10px 32px rgba(255, 79, 134, 0.28);
       }
     }
 

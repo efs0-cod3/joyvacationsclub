@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 const ToursCards = () => {
   return (
-    <section className="tours-section">
+    <section className="tours-section" id="destinos">
       <div className="tours-section__header">
         <div>
           <p className="tours-section__kicker">Destinos seleccionados</p>
@@ -22,14 +22,26 @@ const ToursCards = () => {
           className={`tour-card${idx % 2 !== 0 ? ' tour-card--reverse' : ''}`}
         >
           <div className="tour-card__img-wrap">
-            <span className="tour-card__img-wrap__tag">Disponible</span>
-            <img src={tour.image} alt={tour.title} />
+            <span className="tour-card__img-wrap__tag">
+              {tour.viatorUrl ? 'Reserva en Viator' : 'Disponible'}
+            </span>
+            {tour.image ? (
+              <img src={tour.image} alt={tour.title} />
+            ) : (
+              <div className="tour-card__img-fallback" aria-hidden="true">
+                <span>{tour.location || tour.title}</span>
+              </div>
+            )}
           </div>
 
           <div className="tour-card__info">
             <span className="tour-card__num">
               {String(idx + 1).padStart(2, '0')}
             </span>
+
+            {tour.location && (
+              <p className="tour-card__location">{tour.location}</p>
+            )}
 
             <h3 className="tour-card__title">{tour.title}</h3>
 
@@ -38,20 +50,37 @@ const ToursCards = () => {
             <div className="tour-card__meta">
               <div className="tour-card__price">
                 <span className="lbl">Desde</span>
-                <span className="val">
-                  <span className="cur">USD </span>
-                  {tour.price.toLocaleString('en-US')}
-                </span>
+                {tour.price != null ? (
+                  <span className="val">
+                    <span className="cur">USD </span>
+                    {tour.price.toLocaleString('en-US')}
+                  </span>
+                ) : (
+                  <span className="val val--small">Ver en Viator</span>
+                )}
               </div>
-              <div className="tour-card__dur">
-                <span className="lbl">Duración</span>
-                <span className="val">{tour.duration}</span>
-              </div>
+              {tour.duration && (
+                <div className="tour-card__dur">
+                  <span className="lbl">Duración</span>
+                  <span className="val">{tour.duration}</span>
+                </div>
+              )}
             </div>
 
-            <Link to="/contacts" className="tour-card__cta">
-              Reservar ahora <span className="arrow">→</span>
-            </Link>
+            {tour.viatorUrl ? (
+              <a
+                href={tour.viatorUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tour-card__cta"
+              >
+                Reservar en Viator <span className="arrow">↗</span>
+              </a>
+            ) : (
+              <Link to="/contacts" className="tour-card__cta">
+                Reservar ahora <span className="arrow">→</span>
+              </Link>
+            )}
           </div>
         </article>
       ))}

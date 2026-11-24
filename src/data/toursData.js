@@ -6,13 +6,13 @@
 const toursData = [
   {
     id: 1,
-    title: "Christmas Tour",
+    title: "Tour de Luces de Navidad: Dyker Heights, Brooklyn y más",
     location: "Nueva York",
     description:
-      "Vive la magia de la Navidad en Nueva York con Joy Vacations Club. Recorre las luces, decoraciones y rincones más emblemáticos de la ciudad durante la temporada más especial del año.",
-    price: null,
-    image: null,
-    duration: null,
+      "¡El tour más esperado del año! Visitaremos Dyker Heights y Bay Ridge en Brooklyn, famosos por sus espectaculares decoraciones navideñas. También descubriremos DUMBO y el Brooklyn Bridge, y recorreremos Manhattan para admirar Lincoln Center, la Quinta Avenida y Rockefeller Center, donde la Navidad se vive de una manera única.",
+    price: 74,
+    image: "/assets/img/nyc/christmas-lights.jpg",
+    duration: "4 horas (aprox.)",
     viatorUrl:
       "https://www.viator.com/es-ES/tours/New-York-City/Christmas-Tour/d687-220222P3",
   },

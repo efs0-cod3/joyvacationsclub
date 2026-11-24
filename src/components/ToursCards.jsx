@@ -1,5 +1,6 @@
 import toursData from '../data/toursData'
 import { Link } from 'react-router'
+import TourGallery from './TourGallery'
 
 const ToursCards = () => {
   return (
@@ -25,8 +26,11 @@ const ToursCards = () => {
             <span className="tour-card__img-wrap__tag">
               {tour.viatorUrl ? 'Reserva en Viator' : 'Disponible'}
             </span>
-            {tour.image ? (
-              <img src={tour.image} alt={tour.title} />
+            {tour.images?.length || tour.image ? (
+              <TourGallery
+                images={tour.images?.length ? tour.images : [tour.image]}
+                title={tour.title}
+              />
             ) : (
               <div className="tour-card__img-fallback" aria-hidden="true">
                 <span>{tour.location || tour.title}</span>

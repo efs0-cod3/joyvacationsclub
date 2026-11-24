@@ -275,3 +275,69 @@
     }
   }
 }
+
+// ── Galería de fotos del tour ──────────────────────────────────
+.tour-gallery {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &__img {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.5s var(--ease), transform 0.7s var(--ease), filter 0.5s !important;
+
+    &.is-active { opacity: 1; }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    transform: translateY(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--c-cream);
+    background: rgba(8, 8, 8, 0.55);
+    border: 1px solid var(--c-border);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+
+    &:hover {
+      background: rgba(8, 8, 8, 0.8);
+      border-color: var(--c-gold);
+    }
+
+    &--prev { left: 1rem; }
+    &--next { right: 1rem; }
+  }
+
+  &__dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    z-index: 3;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid var(--c-cream);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &.is-active { background: var(--c-gold); border-color: var(--c-gold); }
+  }
+}

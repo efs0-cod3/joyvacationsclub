@@ -1,6 +1,7 @@
 // Cada tour puede tener:
 //  - price:     número en USD (o null para mostrar "Ver precio en Viator")
-//  - image:     ruta de la imagen (o null para mostrar el fondo de destino)
+//  - images:    lista de fotos (galería con flechas); o image para una sola
+//               foto; sin ninguna se muestra el fondo de destino
 //  - viatorUrl: enlace directo al listing en Viator (si existe, el botón
 //               "Reservar en Viator" reemplaza al de contacto)
 const toursData = [
@@ -11,7 +12,13 @@ const toursData = [
     description:
       "¡El tour más esperado del año! Visitaremos Dyker Heights y Bay Ridge en Brooklyn, famosos por sus espectaculares decoraciones navideñas. También descubriremos DUMBO y el Brooklyn Bridge, y recorreremos Manhattan para admirar Lincoln Center, la Quinta Avenida y Rockefeller Center, donde la Navidad se vive de una manera única.",
     price: 74,
-    image: "/assets/img/nyc/christmas-lights.jpg",
+    images: [
+      "/assets/img/nyc/navidad-1.jpg",
+      "/assets/img/nyc/navidad-2.jpg",
+      "/assets/img/nyc/navidad-3.jpg",
+      "/assets/img/nyc/navidad-4.jpg",
+      "/assets/img/nyc/navidad-5.jpg",
+    ],
     duration: "4 horas (aprox.)",
     viatorUrl:
       "https://www.viator.com/es-ES/tours/New-York-City/Christmas-Tour/d687-220222P3",

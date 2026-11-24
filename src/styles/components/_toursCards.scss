@@ -122,6 +122,16 @@
       border: 1px solid var(--c-border);
       padding: 0.35rem 0.75rem;
       backdrop-filter: blur(4px);
+
+      &--link {
+        transition: background 0.3s, color 0.3s, border-color 0.3s;
+
+        &:hover {
+          color: var(--c-bg);
+          background: var(--c-gold);
+          border-color: var(--c-gold);
+        }
+      }
     }
   }
 

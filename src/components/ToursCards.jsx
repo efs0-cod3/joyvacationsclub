@@ -23,9 +23,18 @@ const ToursCards = () => {
           className={`tour-card${idx % 2 !== 0 ? ' tour-card--reverse' : ''}`}
         >
           <div className="tour-card__img-wrap">
-            <span className="tour-card__img-wrap__tag">
-              {tour.viatorUrl ? 'Reserva en Viator' : 'Disponible'}
-            </span>
+            {tour.viatorUrl ? (
+              <a
+                href={tour.viatorUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tour-card__img-wrap__tag tour-card__img-wrap__tag--link"
+              >
+                Reserva en Viator ↗
+              </a>
+            ) : (
+              <span className="tour-card__img-wrap__tag">Disponible</span>
+            )}
             {tour.images?.length || tour.image ? (
               <TourGallery
                 images={tour.images?.length ? tour.images : [tour.image]}

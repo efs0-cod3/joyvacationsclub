@@ -1,17 +1,17 @@
 :root {
-  --c-bg:       #080808;
-  --c-bg-2:     #0E0E12;
-  --c-bg-3:     #16161C;
-  --c-gold:     #C9A96E;
-  --c-gold-lt:  #E8D5A3;
-  --c-gold-dim: rgba(201, 169, 110, 0.22);
-  --c-cream:    #F5F0EA;
-  --c-coral:    #D96C54;
-  --c-text:     #F0EBE3;
-  --c-muted:    rgba(240, 235, 227, 0.52);
-  --c-faint:    rgba(240, 235, 227, 0.2);
-  --c-border:   rgba(201, 169, 110, 0.12);
-  --c-border-h: rgba(201, 169, 110, 0.45);
+  --c-bg:       #0F0A1F;
+  --c-bg-2:     #1A1033;
+  --c-bg-3:     #251846;
+  --c-gold:     #FF4F86; // acento principal (rosa del logo)
+  --c-gold-lt:  #FF8FB1;
+  --c-gold-dim: rgba(255, 79, 134, 0.35);
+  --c-cream:    #FFFFFF;
+  --c-coral:    #FFB547; // acento secundario (naranja)
+  --c-text:     #FFF5FA;
+  --c-muted:    rgba(255, 245, 250, 0.72);
+  --c-faint:    rgba(255, 245, 250, 0.4);
+  --c-border:   rgba(255, 79, 134, 0.22);
+  --c-border-h: rgba(255, 79, 134, 0.6);
 
   --font-d: 'Cormorant Garamond', Georgia, serif;
   --font-b: 'Outfit', system-ui, sans-serif;

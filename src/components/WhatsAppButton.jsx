@@ -1,10 +1,10 @@
 import { useState } from "react";
+import { WHATSAPP_NUMBER } from "../data/contact";
 
-const PHONE = import.meta.env.VITE_WHATSAPP_PHONE;
 const MESSAGE = encodeURIComponent(
   "Hola, me interesa conocer más sobre sus tours y paquetes vacacionales. ¿Me pueden dar más información?"
 );
-const WA_URL = `https://wa.me/${PHONE}?text=${MESSAGE}`;
+const WA_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${MESSAGE}`;
 
 const WhatsAppButton = () => {
   const [hovered, setHovered] = useState(false);

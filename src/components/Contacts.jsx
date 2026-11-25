@@ -5,12 +5,11 @@ import Swal from 'sweetalert2'
 import { BiLogoInstagramAlt } from 'react-icons/bi'
 import { FaSquareWhatsapp } from 'react-icons/fa6'
 import { FiMapPin, FiArrowLeft } from 'react-icons/fi'
+import { WHATSAPP_NUMBER, PHONE_FORMATTED } from '../data/contact'
 
 const Contacts = () => {
   const navigate = useNavigate()
   const [sending, setSending] = useState(false)
-  const PHONE = import.meta.env.VITE_WHATSAPP_PHONE;
-  const PHONE_FORMATTED = import.meta.env.VITE_PHONE_FORMATTED;
 
   const sendEmail = (e) => {
     e.preventDefault()
@@ -79,7 +78,7 @@ const Contacts = () => {
               <p className="lbl">WhatsApp</p>
               <p className="val">
                 <a
-                  href={`https://wa.me/1${PHONE}?text=Hola les hablo desde el website me gustaria agendar...`}
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola les hablo desde el website me gustaria agendar...`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

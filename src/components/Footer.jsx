@@ -32,7 +32,7 @@ const Footer = () => {
           <div className="footer__brand">
             <Link to="/">
               <img
-                src="/assets/logos/joy_vacation_club_logo.png"
+                src="/assets/logos/joy_logo_rosa_blanco.png"
                 alt="Joy Vacations Club"
               />
             </Link>
